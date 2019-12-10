@@ -1,0 +1,83 @@
+import UIKit
+import Foundation
+import SwiftUI
+
+DispatchQueue.global(qos: .background).async {
+    //
+}
+
+let concurrentQueue = DispatchQueue(label: "concurrentQueue", qos: .background, attributes: .concurrent)
+let serialQueue = DispatchQueue(label: "serialQueue", qos: .background)
+
+/*
+1- userInteractive : Work is virtually instantaneous. Similar to main thread.
+2- userInitiated : Work is nearly instantaneous, such as a few seconds or less.
+3- default: don’t use it usually , the type will be inferred by the system
+4- utility: Work takes a few seconds to a few minutes.
+5- background: Work takes significant time, such as minutes or hours.
+*/
+
+//see what prints first
+
+//DispatchQueue.global(qos: .background).async {
+//    for i in 0...5 {
+//        print("🚀 \(i)")
+//    }
+//}
+//
+//
+//DispatchQueue.global(qos: .userInteractive).async {
+//    for i in 0...5 {
+//        print("😀 \(i)")
+//    }
+//}
+//
+//DispatchQueue.global(qos: .userInitiated).async {
+//    for i in 0...5 {
+//        print("👍 \(i)")
+//    }
+//}
+//
+//DispatchQueue.global(qos: .default).async {
+//    for i in 0...5 {
+//        print("📫 \(i)")
+//    }
+//}
+//
+//DispatchQueue.global(qos: .utility).async {
+//    for i in 0...5 {
+//        print("📅 \(i)")
+//    }
+//}
+
+
+//sync vs async
+DispatchQueue.global(qos: .background).sync {
+    for i in 0...5 {
+        print("\(i)")
+    }
+}
+
+
+DispatchQueue.global(qos: .userInteractive).async {
+    for i in 0...5 {
+        print("🚀  \(i)")
+    }
+}
+
+public func downloadImage(completion: ((_ data: UIImage)->Void)) {
+    completion(UIImage())
+}
+
+DispatchQueue.init(label: "concurrent", qos: .background, attributes: .concurrent).async {
+    downloadImage() { image in
+        DispatchQueue.main.async {
+//            print(image)
+        }
+    }
+}
+
+//make 5 serial and 5 concurrent calls with DispatchQueue
+//continue with NSOperations and do the same thing
+
+
