@@ -1,0 +1,36 @@
+import UIKit
+
+struct Book {
+    let title: String
+    let author: String
+}
+
+extension Book: Equatable {
+    static func ==(lhs: Book, rhs: Book)-> Bool {
+        if lhs.title == rhs.title && lhs.author == rhs.author {
+            return true
+        }
+        return false
+    }
+}
+
+extension Book: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+//        hasher.combine(author)
+    }
+}
+
+class BookStore {
+    var inventory = [Book]()
+    var uniqueBooks = Set<Book>()
+
+    func add(_ book: Book) {
+        // Inventory will contain all books, including duplicates
+        inventory.append(book)
+
+        // By using a set (which we can, now that 'Book' conforms to 'Hashable')
+        // we can guarantee that 'uniqueBooks' only contains unique values
+        uniqueBooks.insert(book)
+    }
+}
