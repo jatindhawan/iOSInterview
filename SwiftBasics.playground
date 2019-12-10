@@ -1,0 +1,200 @@
+import UIKit
+
+let str = "Hello, playground"
+
+var abc = "Lets be the top developer in entire world"
+
+var x = 5.0, y = 5.2
+
+print("\(abc) " + "\(x)")
+
+print("UInt8 minimum value is = \(UInt8.min)")
+print("UInt8 maximum value is = \(UInt8.max)")
+
+print("UInt16 minimum value is = \(UInt16.min)")
+print("UInt16 maximum value is = \(UInt16.max)")
+
+print("UInt32 minimum value is = \(UInt32.min)")
+print("UInt32 maximum value is = \(UInt32.max)")
+
+print("UInt64 minimum value is = \(UInt64.min)")
+print("UInt64 maximum value is = \(UInt64.max)")
+
+print("Int minimum value is = \(Int.min)")
+print("Int maximum value is = \(Int.max)")
+
+print("UInt minimum value is = \(UInt.min)")
+print("UInt maximum value is = \(UInt.max)")
+
+print("""
+\n
+Double has a precision of at least 15 decimal digits, whereas the precision of Float can be as little as 6 decimal digits. The appropriate floating-point type to use depends on the nature and range of values you need to work with in your code. In situations where either type would be appropriate, Double is preferred.
+""")
+
+let f:Float = 8.234434545224545255252525234236
+let d:Double = 8.234434545224545255252525234236
+
+print("Float == \(f)")
+print("Double == \(d)")
+
+//what if you wanna store more than 15 decimal digits?
+
+let f80: Float80 =  8.234434545224545255252525234236
+print("Float80 == \(f80)")
+
+let decimalInteger = 17
+let binaryInteger = 0b10001       // 17 in binary notation
+let octalInteger = 0o21           // 17 in octal notation
+let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+
+let decimalDouble = 121.875
+let exponentDouble = 1.21875e2
+
+print(decimalDouble)
+print(exponentDouble)
+
+let paddedDouble = 000123.456
+let oneMillion = 1_000_000
+let justOverOneMillion = 1_000_000.000_000_1
+
+print(paddedDouble)
+print(oneMillion)
+print(justOverOneMillion)
+
+let twoThousand: UInt16 = 2_000
+let one: UInt8 = 1
+let twoThousandAndOne = twoThousand + UInt16(one)
+
+let three = 3
+let pointOneFourOneFiveNine = 0.14159
+let pi = Double(three) + pointOneFourOneFiveNine
+
+print(pi)
+
+let newPi = Int(pi)
+print(newPi)
+
+typealias AudioSample = UInt16
+
+var maxAmplitudeFound = AudioSample.max
+
+//tuples==========
+
+
+let http404Error = (404, "Page Not Found")
+
+let (statusCode, statusMessage) = http404Error
+
+print(statusCode)
+
+print(http404Error)
+print(http404Error.self)
+
+let http200Status = (statusCode: 200, description: "OK")
+print(http200Status.statusCode)
+print(http200Status.1)
+
+var array1 = [1, 2, 3, 4, 5]
+var array2 = array1
+array2.append(6)
+var len = array2.count
+
+let straa = "dkjbfkjejkebjejej"
+print(straa.count)
+
+func makeASandwich() throws {
+    throw SandwichError.missingIngredients("Missing 5 ingredients.")
+}
+
+enum SandwichError: Error {
+    case outOfCleanDishes
+    case missingIngredients(String)
+}
+
+do {
+    try makeASandwich()
+} catch SandwichError.outOfCleanDishes {
+    print("outOfCleanDishes")
+} catch SandwichError.missingIngredients(let ingredients) {
+    print(ingredients)
+}
+
+let age = -3
+
+//if age > 10 {
+//    print("You can ride the roller-coaster or the ferris wheel.")
+//} else if age >= 0 {
+//    print("You can ride the ferris wheel.")
+//} else {
+//    assertionFailure("A person's age can't be less than zero.")
+//}
+//assertionFailure("A person's age can't be less than zero.")
+//precondition(age > 0, "Index must be greater than zero.")
+
+var (ax, ay) = (1, 2)
+
+//if ax = ay {
+//    // This is not valid, because x = y does not return a value.
+//}
+
+var num = 19 % 4
+print(num)
+
+var a: Int = 0
+let b: Int = 0
+//var result = a % b
+
+//func mduloOperation(a: Int, b: Int) -> Int  {
+//    var multiplier = 0
+////    multiplier = Round of a/b == 4
+////    a = (b * multiplier) + remainder
+////    return a - (b * multiplier)
+//
+//}
+
+a = a + 2
+a+=2
+print(a)
+
+(1, "zebra") == (1, "")
+
+//("blue", false) > ("purple", true)
+("blue", false) == ("purple", true)
+
+let c: Int? = nil
+print(c != nil ? c! : b)
+
+print(c ?? b)
+
+for index in 1...5 {
+    print(index)
+}
+
+for index in 1..<5 {
+    print(index)
+}
+
+let names = ["Anna", "Alex", "Brian", "Jack"]
+for name in names[2...] {
+    print(name)
+}
+print("\n")
+for name in names[...2] {
+    print(name)
+}
+
+print("\n")
+for name in names[..<2] {
+    print(name)
+}
+
+for i in 1... {
+    print(i)
+    if i == 10 { //will go infinity if this condition is not here
+        break
+    }
+}
+
+let range = ...5
+print(range)
+print(range.contains(5))
