@@ -1,0 +1,95 @@
+import UIKit
+
+let quotation = """
+The White Rabbit put on his spectacles.  "Where shall I begin,
+please your Majesty?" he asked.
+
+"Begin at the beginning," the King said gravely, "and go on
+till you come to the end; then stop."
+"""
+
+let softWrappedQuotation = """
+The White Rabbit put on his spectacles.  "Where shall I begin,
+please your Majesty?" he asked.
+"""
+
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+
+let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+
+let threeDoubleQuotationMarks = """
+Escaping the first quotation mark \"""
+Escaping all three quotation marks \"
+"""
+
+print(threeDoubleQuotationMarks)
+
+let threeMoreDoubleQuotationMarks = #"""
+Here are three more double quotes: """
+"""#
+
+print( ###"Line1\###nLine2"###)
+
+let emptyString = ""
+
+if emptyString.isEmpty {
+    print("Nothing to see here")
+}
+
+for character in "Dog!🐶" {
+    print(character)
+}
+
+let exclamationMark: Character = "!"
+
+let catCharacters: [Character] = ["c", "a", "t", "!"]
+
+let catString = String(catCharacters)
+
+print(catString)
+
+var string1 = "hello"
+let string2 = " there"
+
+var welcome = string1 + string2
+
+welcome.append(exclamationMark)
+
+print(#"Write an interpolated string in Swift using \(multiplier)."#)
+
+print(#"6 times 7 is \#(6 * 7)."#)
+
+print("6 times 7 is \(6 * 7)")
+
+var greeting = "Guten Tag!"
+greeting.startIndex
+greeting.endIndex
+greeting[greeting.startIndex]
+//greeting[greeting.endIndex]
+
+greeting[greeting.index(before: greeting.endIndex)]
+
+for index in greeting.indices {
+    print("\(greeting[index]) ", separator: "--")
+}
+
+welcome = "hello"
+print(welcome.count)
+welcome.insert("!", at: welcome.endIndex)
+print(welcome)
+print(welcome.count)
+
+welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
+
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+
+let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+welcome.removeSubrange(range)
+
+greeting = "Hello, world!"
+
+let index = greeting.inde
+
+let beginning = greeting[..<index]
